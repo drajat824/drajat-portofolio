@@ -67,12 +67,12 @@ export default function Home() {
 
         <div className="p-6 w-[30%] flex flex-row sm:block md:block justify-between sm:w-[50%] md:w-[50%] sm:text-right md:text-right">
           <div className="flex flex-col text-white">
-            <a href="#" onClick={handleHireButtonClick} className="mb-2 underline">
+            <button onClick={handleHireButtonClick} className="mb-2 underline text-left sm:text-right md:text-right">
               Hire Me
-            </a>
-            <a href="#" onClick={handleGetinButtonClick} className="underline ">
+            </button>
+            <button onClick={handleGetinButtonClick} className="underline text-left sm:text-right md:text-right">
               Get in Touch
-            </a>
+            </button>
           </div>
 
           <a href="#" className="h-max md:hidden sm:hidden">
