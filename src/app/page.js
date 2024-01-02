@@ -83,9 +83,9 @@ export default function Home() {
         </div>
       </nav>
 
-      <div className="w-screen h-[600px] md:h-fit sm:h-fit bg-color md:bg-gradient-to-r md:from-green md:to-green sm:bg-gradient-to-r sm:from-green sm:to-green">
+      <div className="w-screen h-[600px] xl:h-[700px] lg:h-[700px] md:h-fit sm:h-fit bg-color md:bg-gradient-to-r md:from-green md:to-green sm:bg-gradient-to-r sm:from-green sm:to-green">
         <Image
-          className="absolute left-[-130px] top-[280px] sm:hidden md:hidden"
+          className="absolute left-[-130px] top-[280px] sm:hidden md:hidden xl:hidden lg:hidden"
           src="/net-green.png"
           alt=""
           width={280}
@@ -93,7 +93,7 @@ export default function Home() {
           priority
         />
         <Image
-          className="absolute right-[-150px] top-[190px] sm:hidden md:hidden"
+          className="absolute right-[-150px] top-[190px] sm:hidden md:hidden xl:hidden lg:hidden"
           src="/net-black.png"
           alt=""
           width={280}
@@ -101,7 +101,7 @@ export default function Home() {
           priority
         />
 
-        <div className="mx-auto flex flex-wrap pt-32 max-w-[1000px]">
+        <div className="mx-auto flex flex-wrap pt-32 max-w-[1000px] xl:max-w-[800px] lg:max-w-[800px]">
           <div className="flex-1 pl-[0px] sm:text-center md:text-center sm:pb-10 md:pb-10">
             <p className="text-white pb-6 text-5xl md:text-3xl sm:text-3xl"> Hello, I am</p>
             <p className="font-bold text-8xl md:text-6xl sm:text-6xl pb-5">
@@ -126,10 +126,11 @@ export default function Home() {
             </div>
           </div>
         </div>
+
       </div>
 
       <div className="bg-blue-dark h-min-[400px] w-screen">
-        <div className="mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px]">
+        <div className="mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
           <h1 className="font-bold text-5xl pb-3 text-green underline">SKILLS</h1>
           <p className="pb-3 text-2xl text-white">Some skills that I possess.</p>
           <div className="w-[100%] h-fit rounded-xl pt-5 pb-2 flex flex-wrap">
@@ -143,7 +144,7 @@ export default function Home() {
       </div>
 
       <div className="h-min-[400px] w-screen">
-        <div className="max-w-screen-lg mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px]">
+        <div className="max-w-screen-lg mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
           <h1 className="font-bold text-5xl pb-3 text-green underline">PROJECTS</h1>
           <p className="pb-3 text-2xl text-grey2">
             Several personal and client <br /> projects that I have worked on.
@@ -160,7 +161,6 @@ export default function Home() {
                 <p className="text-2xl text-justify font-bold">UI ONLY - FIGMA</p>
               </div>
               <div className="flex flex-row justify-end sm:pt-3 md:pt-3">
-                {/* <p className="text-2xl pr-4 text-blue font-bold self-center">Source Code</p> */}
                 <a target="_blank" href="https://www.figma.com/file/4I1M0r7BRbfx5qOMpkJns8/KAS-MASJID?type=design&mode=design&t=yTq5MjSQgpS7pJw1-1" className="bg-blue rounded-md">
                   <p className="text-2xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Visit</p>
                 </a>
@@ -168,7 +168,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="w-[1000px] sm:w-[300px] md:w-[300px] border-[0.1px] border-grey mb-10" />
+          <div className="w-[100%] border-[0.1px] border-grey mb-10" />
 
           <div className="flex flex-wrap pb-10">
             <Image src="/zwallet-web.png" alt="" width={300} height={200} priority />
@@ -181,14 +181,11 @@ export default function Home() {
               </div>
               <div className="flex flex-row justify-end sm:pt-3 md:pt-3">
                 <a target="_blank" href="https://github.com/drajat824/Z-Wallet-Web" className="text-2xl pr-4 text-blue font-bold self-center">Source Code</a>
-                {/* <a className="bg-blue rounded-md">
-                  <p className="text-2xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Visit</p>
-                </a> */}
               </div>
             </div>
           </div>
 
-          <div className="w-[1000px] sm:w-[300px] md:w-[300px] border-[0.1px] border-grey mb-10" />
+          <div className="w-[100%] border-[0.1px] border-grey mb-10" />
 
           <div className="flex flex-wrap pb-10">
             <Image src="/zwallet-mobile.jpg" alt="" width={300} height={200} priority />
@@ -201,9 +198,6 @@ export default function Home() {
               </div>
               <div className="flex flex-row justify-end sm:pt-3 md:pt-3">
                 <a target="_blank" href="https://github.com/drajat824/Z-Wallet-Mobile" className="text-2xl pr-4 text-blue font-bold self-center">Source Code</a>
-                {/* <a className="bg-blue rounded-md">
-                  <p className="text-2xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Visit</p>
-                </a> */}
               </div>
             </div>
           </div>
@@ -212,7 +206,7 @@ export default function Home() {
       </div>
 
       <div ref={hireMeRef} className="bg-blue-dark h-min-[400px] w-screen">
-        <div className="max-w-screen-lg mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px]">
+        <div className="max-w-screen-lg mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
           <h1 className="font-bold text-5xl pb-3 text-green underline">HIRE ME</h1>
           <p className="pb-3 text-2xl text-white">Do you need my help?</p>
 
