@@ -5,7 +5,7 @@ import React from "react";
 import emailjs from "@emailjs/browser";
 
 export default function Home() {
-  const skills = ["Node Js", "React", "React Native", "HTML", "CSS", "SQL", "Python", "C++"];
+  const skills = ["Node Js", "React", "React Native", "HTML", "CSS", "MYSQL", "Python", "C++"];
 
   const [nameSender, setNameSender] = React.useState("");
   const [emailSender, setEmailSender] = React.useState("");
@@ -150,24 +150,64 @@ export default function Home() {
           </p>
 
           <div className="flex flex-wrap pb-10">
-            <Image src="/prakerin.png" alt="" width={300} height={200} priority />
-
+            <Image src="/kas.png" alt="" width={300} height={200} priority />
             <div className="flex flex-col justify-between flex-1 pl-8 sm:pl-0 sm:pt-5 md:pl-0 md:pt-5">
               <p className="text-2xl text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit turpis nec auctor porttitor. Nullam vel
-                dui sit amet erat dignissim lacinia quis tempor nibh.
+                KAS MASJID adalah sebuah platform inovatif berupa website dan aplikasi yang diciptakan khusus untuk membantu dalam
+                perhitungan dan rekapitulasi data zakat di masjid.
               </p>
               <div>
-                <p className="text-2xl text-justify">React Native | Bootstrap</p>
+                <p className="text-2xl text-justify font-bold">UI ONLY - FIGMA</p>
               </div>
               <div className="flex flex-row justify-end sm:pt-3 md:pt-3">
-                <p className="text-2xl pr-4 text-blue font-bold self-center">Source Code</p>
-                <div className="bg-blue rounded-md">
+                {/* <p className="text-2xl pr-4 text-blue font-bold self-center">Source Code</p> */}
+                <a target="_blank" href="https://www.figma.com/file/4I1M0r7BRbfx5qOMpkJns8/KAS-MASJID?type=design&mode=design&t=yTq5MjSQgpS7pJw1-1" className="bg-blue rounded-md">
                   <p className="text-2xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Visit</p>
-                </div>
+                </a>
               </div>
             </div>
           </div>
+
+          <div className="w-[1000px] sm:w-[300px] md:w-[300px] border-[0.1px] border-grey mb-10" />
+
+          <div className="flex flex-wrap pb-10">
+            <Image src="/zwallet-web.png" alt="" width={300} height={200} priority />
+            <div className="flex flex-col justify-between flex-1 pl-8 sm:pl-0 sm:pt-5 md:pl-0 md:pt-5">
+              <p className="text-2xl text-justify">
+              Project yang saya buat kali ini bernama ZWallet yang mempunyai tujuan untuk menyimpan uang secara virtual. Project Ini dibuat menggunakan ReactJs dan React Bootstrap
+              </p>
+              <div>
+                <p className="text-2xl text-justify font-bold">REACT JS</p>
+              </div>
+              <div className="flex flex-row justify-end sm:pt-3 md:pt-3">
+                <a target="_blank" href="https://github.com/drajat824/Z-Wallet-Web" className="text-2xl pr-4 text-blue font-bold self-center">Source Code</a>
+                {/* <a className="bg-blue rounded-md">
+                  <p className="text-2xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Visit</p>
+                </a> */}
+              </div>
+            </div>
+          </div>
+
+          <div className="w-[1000px] sm:w-[300px] md:w-[300px] border-[0.1px] border-grey mb-10" />
+
+          <div className="flex flex-wrap pb-10">
+            <Image src="/zwallet-mobile.jpg" alt="" width={300} height={200} priority />
+            <div className="flex flex-col justify-between flex-1 pl-8 sm:pl-0 sm:pt-5 md:pl-0 md:pt-5">
+              <p className="text-2xl text-justify">
+              Zwallet adalah aplikasi payment yang dibangun menggunakan React Native dan Redux, aplikasi ini dirancang untuk memudahkan melakukan pembayaran secara online dengan mudah dan cepat.
+              </p>
+              <div>
+                <p className="text-2xl text-justify font-bold">REACT NATIVE</p>
+              </div>
+              <div className="flex flex-row justify-end sm:pt-3 md:pt-3">
+                <a target="_blank" href="https://github.com/drajat824/Z-Wallet-Mobile" className="text-2xl pr-4 text-blue font-bold self-center">Source Code</a>
+                {/* <a className="bg-blue rounded-md">
+                  <p className="text-2xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Visit</p>
+                </a> */}
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
