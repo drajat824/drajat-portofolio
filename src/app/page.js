@@ -1,113 +1,254 @@
-import Image from 'next/image'
+"use client";
+
+import Image from "next/image";
+import React from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Home() {
+  const skills = ["Node Js", "React", "React Native", "HTML", "CSS", "SQL", "Python", "C++"];
+
+  const [nameSender, setNameSender] = React.useState("");
+  const [emailSender, setEmailSender] = React.useState("");
+  const [messageSender, setMessageSender] = React.useState("");
+
+  const [modal, setModal] = React.useState(false);
+
+  const form = React.createRef();
+  const hireMeRef = React.createRef();
+  const getInRef = React.createRef();
+
+  const handleHireButtonClick = (e) => {
+    hireMeRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleGetinButtonClick = () => {
+    getInRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    console.log(form.current);
+
+    emailjs.sendForm("service_vfhyini", "template_3zy3pb8", form.current, "h2zQUgThAxis_yMmC").then(
+      (result) => {
+        setModal(true);
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      },
+      (error) => {
+        console.log(error.text);
+      }
+    );
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
+    <div className="flex flex-col max-w-max">
+      <nav className="flex flex-row absolute sm:justify-between sm:items-center md:items-center" style={{ width: "100%" }}>
+        <div className="p-6 w-[70%] sm:w-[50%] md:w-[50%]">
+          <div className="w-min">
+            <a href="#" className="font-bold text-white text-3xl">
+              <p>DRAJAT</p>
+            </a>
+          </div>
+        </div>
+
+        {modal && (
+          <div className="fixed w-full h-full top-[0px] bg-black bg-opacity-50 flex justify-center items-center flex-col z-50">
+            <div className="w-[500px] h-[200px] bg-white rounded-t-sm flex items-center justify-center">
+              <Image src="/success.svg" alt="" width={150} height={200} priority />
+            </div>
+            <div className="w-[500px] h-[70px] rounded-b-sm bg-[#25AE88] flex items-center text-white text-2xl justify-center">
+              SUCCESS
+            </div>
+          </div>
+        )}
+
+        <div className="p-6 w-[30%] flex flex-row sm:block md:block justify-between sm:w-[50%] md:w-[50%] sm:text-right md:text-right">
+          <div className="flex flex-col text-white">
+            <a href="#" onClick={handleHireButtonClick} className="mb-2 underline">
+              Hire Me
+            </a>
+            <a href="#" onClick={handleGetinButtonClick} className="underline ">
+              Get in Touch
+            </a>
+          </div>
+
+          <a href="#" className="h-max md:hidden sm:hidden">
+            <div style={{ width: 30, borderWidth: 2, borderColor: "white", marginBottom: 3 }} />
+            <div style={{ width: 30, borderWidth: 2, borderColor: "white", marginBottom: 3 }} />
+            <div style={{ width: 30, borderWidth: 2, borderColor: "white", marginBottom: 3 }} />
           </a>
+        </div>
+      </nav>
+
+      <div className="w-screen h-[600px] md:h-fit sm:h-fit bg-color md:bg-gradient-to-r md:from-green md:to-green sm:bg-gradient-to-r sm:from-green sm:to-green">
+        <Image
+          className="absolute left-[-130px] top-[280px] sm:hidden md:hidden"
+          src="/net-green.png"
+          alt=""
+          width={280}
+          height={280}
+          priority
+        />
+        <Image
+          className="absolute right-[-150px] top-[190px] sm:hidden md:hidden"
+          src="/net-black.png"
+          alt=""
+          width={280}
+          height={280}
+          priority
+        />
+
+        <div className="mx-auto flex flex-wrap pt-32 max-w-[1000px]">
+          <div className="flex-1 pl-[0px] sm:text-center md:text-center sm:pb-10 md:pb-10">
+            <p className="text-white pb-6 text-5xl md:text-3xl sm:text-3xl"> Hello, I am</p>
+            <p className="font-bold text-8xl md:text-6xl sm:text-6xl pb-5">
+              Drajat Fikri <br /> Alfianto
+            </p>
+            <p className="text-2xl text-white">
+              I am a <span className="font-bold text-black">Fullstack Developer</span> with experience in developing{" "}
+              <br className="md:hidden sm:hidden" /> website, mobile applications and IoT.
+            </p>
+          </div>
+
+          <div className="flex-none pr-[70px] sm:pr-0 md:pr-0 md:flex sm:flex md:justify-center md: items-center sm:bg-dark md:bg-dark sm:w-[100%] md:w-[100%] sm:h-96 md:h-96">
+            <div className="border-8 border-green rounded-full" style={{ width: 295, height: 295 }}>
+              <Image
+                src="/iam.png"
+                alt="Drajat Fikri Alfianto"
+                className="dark:invert relative top-[-13px] right-[0px]"
+                width={280}
+                height={280}
+                priority
+              />
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="bg-blue-dark h-min-[400px] w-screen">
+        <div className="mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px]">
+          <h1 className="font-bold text-5xl pb-3 text-green underline">SKILLS</h1>
+          <p className="pb-3 text-2xl text-white">Some skills that I possess.</p>
+          <div className="w-[100%] h-fit rounded-xl pt-5 pb-2 flex flex-wrap">
+            {skills.map((e) => (
+              <div className="w-fit h-fit rounded-xl bg-green p-3 mr-3 mb-3">
+                <p className="text-white text-2xl">{e}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+      <div className="h-min-[400px] w-screen">
+        <div className="max-w-screen-lg mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px]">
+          <h1 className="font-bold text-5xl pb-3 text-green underline">PROJECTS</h1>
+          <p className="pb-3 text-2xl text-grey2">
+            Several personal and client <br /> projects that I have worked on.
           </p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          <div className="flex flex-wrap pb-10">
+            <Image src="/prakerin.png" alt="" width={300} height={200} priority />
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+            <div className="flex flex-col justify-between flex-1 pl-8 sm:pl-0 sm:pt-5 md:pl-0 md:pt-5">
+              <p className="text-2xl text-justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit turpis nec auctor porttitor. Nullam vel
+                dui sit amet erat dignissim lacinia quis tempor nibh.
+              </p>
+              <div>
+                <p className="text-2xl text-justify">React Native | Bootstrap</p>
+              </div>
+              <div className="flex flex-row justify-end sm:pt-3 md:pt-3">
+                <p className="text-2xl pr-4 text-blue font-bold self-center">Source Code</p>
+                <div className="bg-blue rounded-md">
+                  <p className="text-2xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Visit</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </main>
-  )
+
+      <div ref={hireMeRef} className="bg-blue-dark h-min-[400px] w-screen">
+        <div className="max-w-screen-lg mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px]">
+          <h1 className="font-bold text-5xl pb-3 text-green underline">HIRE ME</h1>
+          <p className="pb-3 text-2xl text-white">Do you need my help?</p>
+
+          <form ref={form}>
+            <div className="pb-[20px]">
+              <label for="name" className="text-1xl text-white">
+                Your Name
+              </label>
+              <input
+                name="user_name"
+                onChange={(e) => setNameSender(e.target.value)}
+                value={nameSender}
+                type="text"
+                className="w-full rounded-md pt-[10px] pb-[10px] pl-[10px] focus:outline-none"
+                id="name"
+                placeholder="Enter your name.."
+              />
+            </div>
+            <div className="pb-[20px]">
+              <label for="name" className="text-1xl text-white">
+                Your Email
+              </label>
+              <input
+                name="user_email"
+                onChange={(e) => setEmailSender(e.target.value)}
+                value={emailSender}
+                type="email"
+                className="w-full rounded-md pt-[10px] pb-[10px] pl-[10px] focus:outline-none"
+                id="email"
+                placeholder="Enter your email.."
+              />
+            </div>
+            <div>
+              <label for="name" className="text-1xl text-white">
+                Your Message
+              </label>
+              <textarea
+                name="message"
+                onChange={(e) => setMessageSender(e.target.value)}
+                value={messageSender}
+                className="w-full rounded-md pt-[10px] pb-[10px] pl-[10px] focus:outline-none"
+                id="name"
+                placeholder="Enter your message.."
+                rows="10"
+              />
+            </div>
+            <div className="flex justify-end pt-[20px]">
+              <a href="#" onClick={sendEmail} className="w-[150px] h-[50px] rounded-lg bg-blue flex items-center justify-center">
+                <p className="text-white text-2xl">SUBMIT</p>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div ref={getInRef} className="h-min-[400px] w-screen">
+        <div className="max-w-screen-lg pt-[100px] pb-[100px] flex flex-wrap justify-center items-center">
+          <div>
+            <Image src="/get-in.png" alt="" width={200} height={200} priority />
+          </div>
+
+          <div className="pl-5">
+            <h1 className="font-bold text-5xl pb-3 text-green">GET IN TOUCH</h1>
+            <div className="sm:pl-1 md:pl-1">
+              <a href="https://www.linkedin.com/in/drajatfikri/" target="_blank" className="flex flex-row mb-[15px] w-fit">
+                <Image src="linkedln.svg" width={30} height={30} priority />
+                <p className="pl-[5px] text-1xl font-bold">drajatfikri</p>
+              </a>
+              <a href="https://github.com/drajat824" target="_blank" className="flex flex-row">
+                <Image src="github.svg" width={32} height={32} priority />
+                <p className="pl-[5px] text-1xl text-1xl font-bold">drajat824</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
