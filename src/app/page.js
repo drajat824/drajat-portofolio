@@ -2,18 +2,14 @@
 
 import Image from "next/image";
 import React from "react";
-import emailjs from "@emailjs/browser";
 
 export default function Home() {
-  const skills = ["Node Js", "React", "React Native", "HTML", "CSS", "MYSQL", "Python", "C++"];
+  const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL"];
+  const skills2 = ["Internet Of Things", "Electronics Circuit Design", "Soldering", "Basic Network Administration"];
+  // const data = {
+  //   [{title: "Zwallet", desc: "Zwallet adalah blablblalbalbalbal", "skills": ["React", "React Native", "ExpressJs"], "video": "google.com", "sc1": "asdasd", "sc2": ""}]
+  // }
 
-  const [nameSender, setNameSender] = React.useState("");
-  const [emailSender, setEmailSender] = React.useState("");
-  const [messageSender, setMessageSender] = React.useState("");
-
-  const [modal, setModal] = React.useState(false);
-
-  const form = React.createRef();
   const hireMeRef = React.createRef();
   const getInRef = React.createRef();
 
@@ -25,61 +21,40 @@ export default function Home() {
     getInRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    console.log(form.current);
-
-    emailjs.sendForm("service_vfhyini", "template_3zy3pb8", form.current, "h2zQUgThAxis_yMmC").then(
-      (result) => {
-        setModal(true);
-
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
-      },
-      (error) => {
-        console.log(error.text);
-      }
-    );
-  };
 
   return (
     <div className="flex flex-col max-w-max">
       <nav className="flex flex-row absolute sm:justify-between sm:items-center md:items-center" style={{ width: "100%" }}>
+
         <div className="p-6 w-[70%] sm:w-[50%] md:w-[50%]">
-          <div className="w-min">
-            <a href="#" className="font-bold text-white text-3xl">
-              <p>DRAJAT</p>
+          <div className="">
+
+            <p className="font-bold text-white text-2xl sm:hidden">
+              Want to check out <br /> my <span className="text-3xl bg-[#343434] underline"><a href="https://flozistor.blogspot.com/">Blog?
+                <Image src="/cursor.png" alt="" width={60} height={60} priority className="absolute top-[70px] left-20" />
+              </a>
+              </span>
+            </p>
+
+            <a className="font-bold text-white text-2xl text-3xl bg-[#343434] underline invisible sm:visible" href="#" >Blog?
+              <Image src="/cursor.png" alt="" width={60} height={60} priority className="absolute top-[50px] left-10" />
             </a>
+
           </div>
         </div>
 
-        {modal && (
-          <div className="fixed w-full h-full top-[0px] bg-black bg-opacity-50 flex justify-center items-center flex-col z-50">
-            <div className="w-[500px] h-[200px] bg-white rounded-t-sm flex items-center justify-center">
-              <Image src="/success.svg" alt="" width={150} height={200} priority />
-            </div>
-            <div className="w-[500px] h-[70px] rounded-b-sm bg-[#25AE88] flex items-center text-white text-2xl justify-center">
-              SUCCESS
-            </div>
-          </div>
-        )}
-
         <div className="p-6 w-[30%] flex flex-row sm:block md:block justify-between sm:w-[50%] md:w-[50%] sm:text-right md:text-right">
           <div className="flex flex-col text-white">
-            <button onClick={handleHireButtonClick} className="mb-2 underline text-left sm:text-right md:text-right">
-              Hire Me
-            </button>
             <button onClick={handleGetinButtonClick} className="underline text-left sm:text-right md:text-right">
               Get in Touch
             </button>
           </div>
 
-          <a href="#" className="h-max md:hidden sm:hidden">
+          {/* <a href="#" className="h-max md:hidden sm:hidden">
             <div style={{ width: 30, borderWidth: 2, borderColor: "white", marginBottom: 3 }} />
             <div style={{ width: 30, borderWidth: 2, borderColor: "white", marginBottom: 3 }} />
             <div style={{ width: 30, borderWidth: 2, borderColor: "white", marginBottom: 3 }} />
-          </a>
+          </a> */}
         </div>
       </nav>
 
@@ -87,14 +62,6 @@ export default function Home() {
         <Image
           className="absolute left-[-130px] top-[280px] sm:hidden md:hidden xl:hidden lg:hidden"
           src="/net-green.png"
-          alt=""
-          width={280}
-          height={280}
-          priority
-        />
-        <Image
-          className="absolute right-[-150px] top-[190px] sm:hidden md:hidden xl:hidden lg:hidden"
-          src="/net-black.png"
           alt=""
           width={280}
           height={280}
@@ -133,9 +100,16 @@ export default function Home() {
         <div className="mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
           <h1 className="font-bold text-5xl pb-3 text-green underline">SKILLS</h1>
           <p className="pb-3 text-2xl text-white">Some skills that I possess.</p>
-          <div className="w-[100%] h-fit rounded-xl pt-5 pb-2 flex flex-wrap">
+          <div className="w-[100%] h-fit rounded-xl pt-5 flex flex-wrap">
             {skills.map((e) => (
               <div className="w-fit h-fit rounded-xl bg-green p-3 mr-3 mb-3">
+                <p className="text-white text-2xl">{e}</p>
+              </div>
+            ))}
+          </div>
+          <div className="w-[100%] h-fit rounded-xl pb-2 flex flex-wrap">
+            {skills2.map((e) => (
+              <div className="w-fit h-fit rounded-xl bg-[#da5964] p-3 mr-3 mb-3">
                 <p className="text-white text-2xl">{e}</p>
               </div>
             ))}
@@ -145,124 +119,133 @@ export default function Home() {
 
       <div className="h-min-[400px] w-screen">
         <div className="max-w-screen-lg mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
-          <h1 className="font-bold text-5xl pb-3 text-green underline">PROJECTS</h1>
-          <p className="pb-3 text-2xl text-grey2">
-            Several personal and client <br /> projects that I have worked on.
-          </p>
+          <h1 className="font-bold text-5xl pb-5 text-green underline">PROJECTS</h1>
 
-          <div className="flex flex-wrap pb-10">
-            <Image src="/kas.png" alt="" width={300} height={200} priority />
-            <div className="flex flex-col justify-between flex-1 pl-8 sm:pl-0 sm:pt-5 md:pl-0 md:pt-5">
-              <p className="text-2xl text-justify">
-                KAS MASJID adalah sebuah platform inovatif berupa website dan aplikasi yang diciptakan khusus untuk membantu dalam
-                perhitungan dan rekapitulasi data zakat di masjid.
-              </p>
-              <div>
-                <p className="text-2xl text-justify font-bold">UI ONLY - FIGMA</p>
-              </div>
-              <div className="flex flex-row justify-end sm:pt-3 md:pt-3">
-                <a target="_blank" href="https://www.figma.com/file/4I1M0r7BRbfx5qOMpkJns8/KAS-MASJID?type=design&mode=design&t=yTq5MjSQgpS7pJw1-1" className="bg-blue rounded-md">
-                  <p className="text-2xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Visit</p>
-                </a>
+          {/* Double Lock Box */}
+          <div className="flex flex-wrap justify-between" >
+            <p className="text-2xl text-justify font-bold hidden sm:block">Double Lock Box</p>
+            <p className="text-xl py-3 hidden sm:block">Arduino IDE | React Native, MQTT | OneSignal Notification</p>
+            <div className="w-[400px]">
+              <Image src="/porto/dlb.jpg" alt="" width={400} height={400} priority />
+              <div className="flex flex-col w-fit space-y-3 pt-3" >
+                <div className="bg-blue rounded-md w-fit">
+                  <a target="_blank" href="https://unyku.id/IpkZxwzus6">
+                    <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
+                  </a>
+                </div>
+                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/DoubleLockBox-Serverless">Source Code - Main</a>
+                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/CameraWebServer-Async-Fix">Source Code - Camera</a>
+                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/DoubleLockBox">Source Code - Aplikasi</a>
               </div>
             </div>
-          </div>
-
-          <div className="w-[100%] border-[0.1px] border-grey mb-10" />
-
-          <div className="flex flex-wrap pb-10">
-            <Image src="/zwallet-web.png" alt="" width={300} height={200} priority />
-            <div className="flex flex-col justify-between flex-1 pl-8 sm:pl-0 sm:pt-5 md:pl-0 md:pt-5">
-              <p className="text-2xl text-justify">
-              Project yang saya buat kali ini bernama ZWallet yang mempunyai tujuan untuk menyimpan uang secara virtual. Project Ini dibuat menggunakan ReactJs dan React Bootstrap
-              </p>
-              <div>
-                <p className="text-2xl text-justify font-bold">REACT JS</p>
-              </div>
-              <div className="flex flex-row justify-end sm:pt-3 md:pt-3">
-                <a target="_blank" href="https://github.com/drajat824/Z-Wallet-Web" className="text-2xl pr-4 text-blue font-bold self-center">Source Code</a>
-              </div>
+            <div className="flex-1 space-y-3 pl-7 sm:pl-0">
+              <p className="text-2xl text-justify font-bold sm:hidden">Double Lock Box</p>
+              <p className="text-xl sm:hidden">Arduino IDE | React Native, MQTT | OneSignal Notification</p>
+              <p className="text-2xl text-justify sm:text-left">Double Lock Box adalah sistem IoT pengunci brankas dengan integrasi Face Recognition dan Fingerprint, dilengkapi aplikasi untuk mengatur dan memonitor pengaturan sistem. Aplikasi juga akan menerima notifikasi saat brankas dalam kondisi mencurigakan.</p>
             </div>
           </div>
+          <div className="w-[100%] border-[0.1px] border-grey my-10" />
 
-          <div className="w-[100%] border-[0.1px] border-grey mb-10" />
-
-          <div className="flex flex-wrap pb-10">
-            <Image src="/zwallet-mobile.jpg" alt="" width={300} height={200} priority />
-            <div className="flex flex-col justify-between flex-1 pl-8 sm:pl-0 sm:pt-5 md:pl-0 md:pt-5">
-              <p className="text-2xl text-justify">
-              Zwallet adalah aplikasi payment yang dibangun menggunakan React Native dan Redux, aplikasi ini dirancang untuk memudahkan melakukan pembayaran secara online dengan mudah dan cepat.
-              </p>
-              <div>
-                <p className="text-2xl text-justify font-bold">REACT NATIVE</p>
-              </div>
-              <div className="flex flex-row justify-end sm:pt-3 md:pt-3">
-                <a target="_blank" href="https://github.com/drajat824/Z-Wallet-Mobile" className="text-2xl pr-4 text-blue font-bold self-center">Source Code</a>
+          {/* AntiSectaBot */}
+          <div className="flex flex-wrap justify-between" >
+            <p className="text-2xl text-justify font-bold hidden sm:block">AntiSectaBot</p>
+            <p className="text-xl py-3 hidden sm:block">Arduino IDE | Raspberry Pi</p>
+            <div className="w-[400px]">
+              <Image src="/porto/antisecta.jpg" alt="" width={400} height={400} priority />
+              <div className="flex flex-col w-fit space-y-3 pt-3" >
+                <div className="bg-blue rounded-md w-fit">
+                  <a target="_blank" href="https://www.youtube.com/@Antisecta-bot">
+                    <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
+                  </a>
+                </div>
+                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/wallfollower-antisecta">Source Code - Wall Follower</a>
               </div>
             </div>
+            <div className="flex-1 space-y-3 pl-7 sm:pl-0">
+              <p className="text-2xl text-justify font-bold sm:hidden">AntiSectaBot</p>
+              <p className="text-xl sm:hidden">Arduino IDE | Raspberry Pi</p>
+              <p className="text-2xl text-justify sm:text-left">AntiSectaBot adalah project yang diajukan untuk PKM (Program Kreativitas Mahasiswa), robot berbasis Machine Learning dan Wall Follower yang dirancang untuk membantu petani bawang merah dalam memberantas hama serangga secara otomatis. Pada project ini, bertugas merancang dan mengimplementasikan wall follower dengan Fuzzy Logic, menggunakan sensor Ultrasonic dan QMC5883 (Kompas).</p>
+            </div>
           </div>
+          <div className="w-[100%] border-[0.1px] border-grey my-10" />
 
+          {/* Media Pembelajaran */}
+          <div className="flex flex-wrap justify-between" >
+            <p className="text-2xl text-justify font-bold hidden sm:block">Media Pembelajaran ANFIS</p>
+            <p className="text-xl py-3 hidden sm:block">Raspberry Pi | Python | MATLAB & Simulink</p>
+            <div className="w-[400px]">
+              <Image src="/porto/mediapem.jpg" alt="" width={400} height={400} priority />
+              <div className="flex flex-col w-fit space-y-3 pt-3" >
+                <div className="bg-blue rounded-md w-fit">
+                  <a target="_blank" href="https://unyku.id/ZCrBkZChSb">
+                    <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
+                  </a>
+                </div>
+                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/pte-anifs">Source Code</a>
+              </div>
+            </div>
+            <div className="flex-1 space-y-3 pl-7 sm:pl-0">
+              <p className="text-2xl text-justify font-bold sm:hidden">Media Pembelajaran ANFIS</p>
+              <p className="text-xl sm:hidden">Raspberry Pi | Python | MATLAB & Simulink</p>
+              <p className="text-2xl text-justify sm:text-left">Sebuah media pembelajaran ANFIS (Adaptive Neuro Fuzzy Inference System), dengan integrasi Matlab & Simulink. Menggunakan Raspberry Pi untuk menjalankan program dengan input dari sensor MQ-2 (Deteksi Gas), DHT11 (Temperatur), dan HuskyLens (Deteksi Jumlah Orang), serta menghasilkan output berupa sinyal PWM untuk mengontrol kecepatan kipas.</p>
+            </div>
+          </div>
+          <div className="w-[100%] border-[0.1px] border-grey my-10" />
+
+          {/* Mini Project RC */}
+          <div className="flex flex-wrap justify-between" >
+            <p className="text-2xl text-justify font-bold hidden sm:block">Mini Project RC</p>
+            <p className="text-xl py-3 hidden sm:block">Arduino IDE | React Native</p>
+            <div className="w-[400px]">
+              <Image src="/porto/minipr.jpg" alt="" width={400} height={400} priority />
+              <div className="flex flex-col w-fit space-y-3 pt-3" >
+                <div className="bg-blue rounded-md w-fit">
+                  <a target="_blank" href="https://unyku.id/SeuUJOLpzq">
+                    <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
+                  </a>
+                </div>
+                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/rcproject">Source Code - Aplikasi</a>
+                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/komdat-esp32">Source Code - Alat</a>
+              </div>
+            </div>
+            <div className="flex-1 space-y-3 pl-7 sm:pl-0">
+              <p className="text-2xl text-justify font-bold sm:hidden">Mini Project RC</p>
+              <p className="text-xl sm:hidden">Arduino IDE | React Native</p>
+              <p className="text-2xl text-justify sm:text-left">Tugas akhir mata kuliah Komunikasi Data, sebuah mobil RC (Remote Control)  yang dikendalikan melalui aplikasi menggunakan BLE (Bluetooth Low Energy). Dilengkapi dengan Streaming Kamera dan Sensor LDR untuk menyalakan lampu otomatis di tempat gelap.</p>
+            </div>
+          </div>
+          <div className="w-[100%] border-[0.1px] border-grey my-10" />
+
+          {/* ZWALLET */}
+          <div className="flex flex-wrap justify-between" >
+            <p className="text-2xl text-justify font-bold hidden sm:block">Zwallet Web & Mobile</p>
+            <p className="text-xl py-3 hidden sm:block">ReactJs | React Native | ExpressJs | Firebase Notification</p>
+            <div className="w-[400px]">
+              <Image src="/porto/zwallet.jpg" alt="" width={400} height={400} priority />
+              <div className="flex flex-col w-fit space-y-3 pt-3" >
+                {/* <div className="bg-blue rounded-md w-fit">
+                    <a target="_blank" href="https://www.figma.com/file/4I1M0r7BRbfx5qOMpkJns8/KAS-MASJID?type=design&mode=design&t=yTq5MjSQgpS7pJw1-1">
+                      <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Visit</p>
+                    </a>
+                  </div> */}
+                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/Z-Wallet-Web">Source Code - Web</a>
+                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/Z-Wallet-Mobile">Source Code - Mobile</a>
+              </div>
+            </div>
+            <div className="flex-1 space-y-3 pl-7 sm:pl-0">
+              <p className="text-2xl text-justify font-bold sm:hidden">Zwallet Web & Mobile</p>
+              <p className="text-xl sm:hidden">ReactJs | React Native | ExpressJs | Firebase Notification</p>
+              <div className="flex items-center">
+                <Image className="mr-3" src="/warning.svg" alt="" width={30} height={30} priority />
+                <p className="text-[#efc82a] text-xl font-semibold">Sedang Dalam Pemeliharaan</p>
+              </div>
+              <p className="text-2xl text-justify sm:text-left">Zwallet adalah aplikasi payment untuk memudahkan melakukan pembayaran secara online dengan mudah dan cepat. Memiliki beberapa fitur seperti Transfer Balance, Notification, Search & Filter Data, Authentication.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div ref={hireMeRef} className="bg-blue-dark h-min-[400px] w-screen">
-        <div className="max-w-screen-lg mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
-          <h1 className="font-bold text-5xl pb-3 text-green underline">HIRE ME</h1>
-          <p className="pb-3 text-2xl text-white">Do you need my help?</p>
-
-          <form ref={form}>
-            <div className="pb-[20px]">
-              <label for="name" className="text-1xl text-white">
-                Your Name
-              </label>
-              <input
-                name="user_name"
-                onChange={(e) => setNameSender(e.target.value)}
-                value={nameSender}
-                type="text"
-                className="w-full rounded-md pt-[10px] pb-[10px] pl-[10px] focus:outline-none"
-                id="name"
-                placeholder="Enter your name.."
-              />
-            </div>
-            <div className="pb-[20px]">
-              <label for="name" className="text-1xl text-white">
-                Your Email
-              </label>
-              <input
-                name="user_email"
-                onChange={(e) => setEmailSender(e.target.value)}
-                value={emailSender}
-                type="email"
-                className="w-full rounded-md pt-[10px] pb-[10px] pl-[10px] focus:outline-none"
-                id="email"
-                placeholder="Enter your email.."
-              />
-            </div>
-            <div>
-              <label for="name" className="text-1xl text-white">
-                Your Message
-              </label>
-              <textarea
-                name="message"
-                onChange={(e) => setMessageSender(e.target.value)}
-                value={messageSender}
-                className="w-full rounded-md pt-[10px] pb-[10px] pl-[10px] focus:outline-none"
-                id="name"
-                placeholder="Enter your message.."
-                rows="10"
-              />
-            </div>
-            <div className="flex justify-end pt-[20px]">
-              <a href="#" onClick={sendEmail} className="w-[150px] h-[50px] rounded-lg bg-blue flex items-center justify-center">
-                <p className="text-white text-2xl">SUBMIT</p>
-              </a>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <div ref={getInRef} className="h-min-[400px] w-screen">
+      <div ref={getInRef} className="bg-blue-dark h-min-[400px] w-screen">
         <div className="max-w-screen-lg pt-[100px] pb-[100px] flex flex-wrap justify-center items-center">
           <div>
             <Image src="/get-in.png" alt="" width={200} height={200} priority />
@@ -273,16 +256,23 @@ export default function Home() {
             <div className="sm:pl-1 md:pl-1">
               <a href="https://www.linkedin.com/in/drajatfikri/" target="_blank" className="flex flex-row mb-[15px] w-fit">
                 <Image src="linkedln.svg" width={30} height={30} priority />
-                <p className="pl-[5px] text-1xl font-bold">drajatfikri</p>
+                <p className="pl-[5px] text-1xl font-bold text-white">drajatfikri</p>
               </a>
               <a href="https://github.com/drajat824" target="_blank" className="flex flex-row">
                 <Image src="github.svg" width={32} height={32} priority />
-                <p className="pl-[5px] text-1xl text-1xl font-bold">drajat824</p>
+                <p className="pl-[5px] text-1xl text-1xl font-bold text-white">drajat824</p>
               </a>
             </div>
           </div>
+
         </div>
+
+        <div className="bg-[#D0D0D0] p-5 p" >
+          <p>Made by Drajat Fikri Alfianto, 2025.</p>
+        </div>
+
       </div>
+
     </div>
   );
 }
