@@ -4,8 +4,8 @@ import Image from "next/image";
 import React from "react";
 
 export default function Home() {
-  const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL"];
-  const skills2 = ["Internet Of Things", "Electronics Circuit Design", "Soldering", "Basic Network Administration"];
+  const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL", "ExpressJs"];
+  const skills2 = ["Internet Of Things", "MQTT", "Electronics Circuit Design", "Soldering", "Basic Network Administration"];
   // const data = {
   //   [{title: "Zwallet", desc: "Zwallet adalah blablblalbalbalbal", "skills": ["React", "React Native", "ExpressJs"], "video": "google.com", "sc1": "asdasd", "sc2": ""}]
   // }
@@ -36,19 +36,20 @@ export default function Home() {
               </span>
             </p>
 
-            <a className="font-bold text-white text-2xl text-3xl bg-[#343434] underline invisible sm:visible" href="#" >Blog?
-              <Image src="/cursor.png" alt="" width={60} height={60} priority className="absolute top-[50px] left-10" />
+            <a className="font-bold text-white text-2xl text-3xl bg-[#343434] underline invisible sm:visible" href="https://flozistor.blogspot.com/" >Blog?
+              <Image src="/cursor.png" alt="" width={60} height={60} priority className="absolute top-11" />
             </a>
 
           </div>
         </div>
 
-        <div className="p-6 w-[30%] flex flex-row sm:block md:block justify-between sm:w-[50%] md:w-[50%] sm:text-right md:text-right">
-          <div className="flex flex-col text-white">
-            <button onClick={handleGetinButtonClick} className="underline text-left sm:text-right md:text-right">
-              Get in Touch
-            </button>
-          </div>
+        <div className="lg:absolute lg:right-5 lg:top-5 lg:p-0 lg:w-fit flex justify-between w-[30%] p-7">
+          
+          <button onClick={handleGetinButtonClick} className="underline text-white h-fit text-xl">
+            Get in Touch
+          </button>
+
+          <Image src="burger.svg" width={50} height={50} priority className="h-max md:hidden sm:hidden lg:hidden" />
 
           {/* <a href="#" className="h-max md:hidden sm:hidden">
             <div style={{ width: 30, borderWidth: 2, borderColor: "white", marginBottom: 3 }} />
@@ -56,6 +57,7 @@ export default function Home() {
             <div style={{ width: 30, borderWidth: 2, borderColor: "white", marginBottom: 3 }} />
           </a> */}
         </div>
+        
       </nav>
 
       <div className="w-screen h-[600px] xl:h-[700px] lg:h-[700px] md:h-fit sm:h-fit bg-color md:bg-gradient-to-r md:from-green md:to-green sm:bg-gradient-to-r sm:from-green sm:to-green">
@@ -98,8 +100,7 @@ export default function Home() {
 
       <div className="bg-blue-dark h-min-[400px] w-screen">
         <div className="mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
-          <h1 className="font-bold text-5xl pb-3 text-green underline">SKILLS</h1>
-          <p className="pb-3 text-2xl text-white">Some skills that I possess.</p>
+          <h1 className="font-bold text-5xl pb-3 text-white underline">SKILLS</h1>
           <div className="w-[100%] h-fit rounded-xl pt-5 flex flex-wrap">
             {skills.map((e) => (
               <div className="w-fit h-fit rounded-xl bg-green p-3 mr-3 mb-3">
@@ -117,14 +118,14 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-min-[400px] w-screen">
+      <div className="h-min-[400px] w-screen bg-[#ebebeb]">
         <div className="max-w-screen-lg mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
-          <h1 className="font-bold text-5xl pb-5 text-green underline">PROJECTS</h1>
+          <h1 className="font-bold text-5xl pb-5 text-blue-dark underline">PROJECTS</h1>
 
           {/* Double Lock Box */}
           <div className="flex flex-wrap justify-between" >
             <p className="text-2xl text-justify font-bold hidden sm:block">Double Lock Box</p>
-            <p className="text-xl py-3 hidden sm:block">Arduino IDE | React Native, MQTT | OneSignal Notification</p>
+            <p className="text-xl py-3 hidden sm:block">Arduino IDE | React Native | MQTT | OneSignal Notification</p>
             <div className="w-[400px]">
               <Image src="/porto/dlb.jpg" alt="" width={400} height={400} priority />
               <div className="flex flex-col w-fit space-y-3 pt-3" >
@@ -138,9 +139,9 @@ export default function Home() {
                 <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/DoubleLockBox">Source Code - Aplikasi</a>
               </div>
             </div>
-            <div className="flex-1 space-y-3 pl-7 sm:pl-0">
+            <div className="flex-1 space-y-3 md:pl-0 pl-7">
               <p className="text-2xl text-justify font-bold sm:hidden">Double Lock Box</p>
-              <p className="text-xl sm:hidden">Arduino IDE | React Native, MQTT | OneSignal Notification</p>
+              <p className="text-xl sm:hidden">Arduino IDE | React Native | MQTT | OneSignal Notification</p>
               <p className="text-2xl text-justify sm:text-left">Double Lock Box adalah sistem IoT pengunci brankas dengan integrasi Face Recognition dan Fingerprint, dilengkapi aplikasi untuk mengatur dan memonitor pengaturan sistem. Aplikasi juga akan menerima notifikasi saat brankas dalam kondisi mencurigakan.</p>
             </div>
           </div>
@@ -161,7 +162,7 @@ export default function Home() {
                 <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/wallfollower-antisecta">Source Code - Wall Follower</a>
               </div>
             </div>
-            <div className="flex-1 space-y-3 pl-7 sm:pl-0">
+            <div className="flex-1 space-y-3 pl-7 md:pl-0">
               <p className="text-2xl text-justify font-bold sm:hidden">AntiSectaBot</p>
               <p className="text-xl sm:hidden">Arduino IDE | Raspberry Pi</p>
               <p className="text-2xl text-justify sm:text-left">AntiSectaBot adalah project yang diajukan untuk PKM (Program Kreativitas Mahasiswa), robot berbasis Machine Learning dan Wall Follower yang dirancang untuk membantu petani bawang merah dalam memberantas hama serangga secara otomatis. Pada project ini, bertugas merancang dan mengimplementasikan wall follower dengan Fuzzy Logic, menggunakan sensor Ultrasonic dan QMC5883 (Kompas).</p>
@@ -184,7 +185,7 @@ export default function Home() {
                 <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/pte-anifs">Source Code</a>
               </div>
             </div>
-            <div className="flex-1 space-y-3 pl-7 sm:pl-0">
+            <div className="flex-1 space-y-3 pl-7 md:pl-0">
               <p className="text-2xl text-justify font-bold sm:hidden">Media Pembelajaran ANFIS</p>
               <p className="text-xl sm:hidden">Raspberry Pi | Python | MATLAB & Simulink</p>
               <p className="text-2xl text-justify sm:text-left">Sebuah media pembelajaran ANFIS (Adaptive Neuro Fuzzy Inference System), dengan integrasi Matlab & Simulink. Menggunakan Raspberry Pi untuk menjalankan program dengan input dari sensor MQ-2 (Deteksi Gas), DHT11 (Temperatur), dan HuskyLens (Deteksi Jumlah Orang), serta menghasilkan output berupa sinyal PWM untuk mengontrol kecepatan kipas.</p>
@@ -208,7 +209,7 @@ export default function Home() {
                 <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/komdat-esp32">Source Code - Alat</a>
               </div>
             </div>
-            <div className="flex-1 space-y-3 pl-7 sm:pl-0">
+            <div className="flex-1 space-y-3 pl-7 md:pl-0">
               <p className="text-2xl text-justify font-bold sm:hidden">Mini Project RC</p>
               <p className="text-xl sm:hidden">Arduino IDE | React Native</p>
               <p className="text-2xl text-justify sm:text-left">Tugas akhir mata kuliah Komunikasi Data, sebuah mobil RC (Remote Control)  yang dikendalikan melalui aplikasi menggunakan BLE (Bluetooth Low Energy). Dilengkapi dengan Streaming Kamera dan Sensor LDR untuk menyalakan lampu otomatis di tempat gelap.</p>
@@ -232,7 +233,7 @@ export default function Home() {
                 <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/Z-Wallet-Mobile">Source Code - Mobile</a>
               </div>
             </div>
-            <div className="flex-1 space-y-3 pl-7 sm:pl-0">
+            <div className="flex-1 space-y-3 pl-7 md:pl-0">
               <p className="text-2xl text-justify font-bold sm:hidden">Zwallet Web & Mobile</p>
               <p className="text-xl sm:hidden">ReactJs | React Native | ExpressJs | Firebase Notification</p>
               <div className="flex items-center">
@@ -253,11 +254,17 @@ export default function Home() {
 
           <div className="pl-5">
             <h1 className="font-bold text-5xl pb-3 text-green">GET IN TOUCH</h1>
-            <div className="sm:pl-1 md:pl-1">
-              <a href="https://www.linkedin.com/in/drajatfikri/" target="_blank" className="flex flex-row mb-[15px] w-fit">
-                <Image src="linkedln.svg" width={30} height={30} priority />
-                <p className="pl-[5px] text-1xl font-bold text-white">drajatfikri</p>
-              </a>
+            <div className="sm:pl-1 md:pl-1 space-y-5">
+              <div className="flex space-x-5">
+                <a href="https://www.linkedin.com/in/drajatfikri/" target="_blank" className="flex flex-row w-fit">
+                  <Image src="linkedln.svg" width={30} height={30} priority />
+                  <p className="pl-[5px] text-1xl font-bold text-white">drajatfikri</p>
+                </a>
+                <a href="mailto:drajat.fikria@gmail.com" target="_blank" className="flex flex-row">
+                  <Image src="gmail.svg" width={32} height={32} priority />
+                  <p className="pl-[5px] text-1xl text-1xl font-bold text-white">drajat.fikria@gmail.com</p>
+                </a>
+              </div>
               <a href="https://github.com/drajat824" target="_blank" className="flex flex-row">
                 <Image src="github.svg" width={32} height={32} priority />
                 <p className="pl-[5px] text-1xl text-1xl font-bold text-white">drajat824</p>
