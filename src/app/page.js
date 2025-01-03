@@ -44,10 +44,15 @@ export default function Home() {
         </div>
 
         <div className="lg:absolute lg:right-5 lg:top-5 lg:p-0 lg:w-fit flex justify-between w-[30%] p-7">
-          
-          <button onClick={handleGetinButtonClick} className="underline text-white h-fit text-xl">
-            Get in Touch
-          </button>
+
+          <div className="underline text-white h-fit text-xl flex flex-col space-y-5">
+            <a href="https://drive.google.com/file/d/1KrKzxaP1QEVRpMyDJOr9ygwJEkRtgDWb/view?usp=sharing" >
+              Download CV
+            </a>
+            <button onClick={handleGetinButtonClick}>
+              Get in Touch
+            </button>
+          </div>
 
           <Image src="burger.svg" width={50} height={50} priority className="h-max md:hidden sm:hidden lg:hidden" />
 
@@ -57,7 +62,7 @@ export default function Home() {
             <div style={{ width: 30, borderWidth: 2, borderColor: "white", marginBottom: 3 }} />
           </a> */}
         </div>
-        
+
       </nav>
 
       <div className="w-screen h-[600px] xl:h-[700px] lg:h-[700px] md:h-fit sm:h-fit bg-color md:bg-gradient-to-r md:from-green md:to-green sm:bg-gradient-to-r sm:from-green sm:to-green">
