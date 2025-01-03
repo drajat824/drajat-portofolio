@@ -46,7 +46,7 @@ export default function Home() {
         <div className="lg:absolute lg:right-5 lg:top-5 lg:p-0 lg:w-fit flex justify-between w-[30%] p-7">
 
           <div className="underline text-white h-fit text-xl flex flex-col space-y-5">
-            <a href="https://drive.google.com/file/d/1KrKzxaP1QEVRpMyDJOr9ygwJEkRtgDWb/view?usp=sharing" >
+            <a className="text-right " href="https://drive.google.com/file/d/1KrKzxaP1QEVRpMyDJOr9ygwJEkRtgDWb/view?usp=sharing" target="_blank">
               Download CV
             </a>
             <button onClick={handleGetinButtonClick}>
