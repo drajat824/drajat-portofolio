@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 export default function Home() {
   const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL", "ExpressJs"];
@@ -12,14 +12,11 @@ export default function Home() {
 
   const hireMeRef = React.createRef();
   const getInRef = React.createRef();
-
-  const handleHireButtonClick = (e) => {
-    hireMeRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-
   const handleGetinButtonClick = () => {
     getInRef.current.scrollIntoView({ behavior: "smooth" });
   };
+
+  const [klik, setKlik] = useState("all")
 
 
   return (
@@ -45,12 +42,12 @@ export default function Home() {
 
         <div className="lg:absolute lg:right-5 lg:top-5 lg:p-0 lg:w-fit flex justify-between w-[30%] p-7">
 
-          <div className="underline text-white h-fit text-xl flex flex-col space-y-5">
-            <a className="text-right " href="https://drive.google.com/file/d/1KrKzxaP1QEVRpMyDJOr9ygwJEkRtgDWb/view?usp=sharing" target="_blank">
-              Download CV
+          <div className="space-y-5">
+            <a className="" href="https://drive.google.com/file/d/1KrKzxaP1QEVRpMyDJOr9ygwJEkRtgDWb/view?usp=sharing" target="_blank">
+              <p className="underline text-white text-xl">Download CV</p>
             </a>
             <button onClick={handleGetinButtonClick}>
-              Get in Touch
+              <p className="underline text-white text-xl">Get in Touch</p>
             </button>
           </div>
 
@@ -107,15 +104,15 @@ export default function Home() {
         <div className="mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
           <h1 className="font-bold text-5xl pb-3 text-white underline">SKILLS</h1>
           <div className="w-[100%] h-fit rounded-xl pt-5 flex flex-wrap">
-            {skills.map((e) => (
-              <div className="w-fit h-fit rounded-xl bg-green p-3 mr-3 mb-3">
+            {skills.map((e, i) => (
+              <div key={`skills1_${i}`} className="w-fit h-fit rounded-xl bg-green p-3 mr-3 mb-3">
                 <p className="text-white text-2xl">{e}</p>
               </div>
             ))}
           </div>
           <div className="w-[100%] h-fit rounded-xl pb-2 flex flex-wrap">
-            {skills2.map((e) => (
-              <div className="w-fit h-fit rounded-xl bg-[#da5964] p-3 mr-3 mb-3">
+            {skills2.map((e, i) => (
+              <div key={`skills2_${i}`} className="w-fit h-fit rounded-xl bg-[#da5964] p-3 mr-3 mb-3">
                 <p className="text-white text-2xl">{e}</p>
               </div>
             ))}
@@ -125,132 +122,146 @@ export default function Home() {
 
       <div className="h-min-[400px] w-screen bg-[#ebebeb]">
         <div className="max-w-screen-lg mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
-          <h1 className="font-bold text-5xl pb-5 text-blue-dark underline">PROJECTS</h1>
+          <h1 className="font-bold text-5xl text-blue-dark underline">PROJECTS</h1>
+
+          <div className="flex flex-row gap-3 py-8">
+            <button onClick={() => setKlik("all")} className={`p-3 rounded-[20px] min-w-[70px] shadow ${klik == "all" ? "bg-[#00B1B6]" : "bg-[#D9D9D9]"}`} >
+              <p className={`text-xl ${klik == "all" ? "text-white" : "text-black"}`}>all</p>
+            </button>
+            <button onClick={() => setKlik("iot")} className={`p-3 rounded-[20px] min-w-[70px] shadow ${klik == "iot" ? "bg-[#00B1B6]" : "bg-[#D9D9D9]"}`} >
+              <p className={`text-xl ${klik == "iot" ? "text-white" : "text-black"}`}>internet of things</p>
+            </button>
+            <button onClick={() => setKlik("apps")} className={`p-3 rounded-[20px] min-w-[70px] shadow ${klik == "apps" ? "bg-[#00B1B6]" : "bg-[#D9D9D9]"}`} >
+              <p className={`text-xl ${klik == "apps" ? "text-white" : "text-black"}`}>mobile/website</p>
+            </button>
+          </div>
 
           {/* Double Lock Box */}
-          <div className="flex flex-wrap justify-between" >
-            <p className="text-2xl text-justify font-bold hidden sm:block">Double Lock Box</p>
-            <p className="text-xl py-3 hidden sm:block">Arduino IDE | React Native | MQTT | OneSignal Notification</p>
-            <div className="w-[400px]">
-              <Image src="/porto/dlb.jpg" alt="" width={400} height={400} priority />
-              <div className="flex flex-col w-fit space-y-3 pt-3" >
-                <div className="bg-blue rounded-md w-fit">
-                  <a target="_blank" href="https://unyku.id/IpkZxwzus6">
-                    <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
-                  </a>
+          {klik == "all" || klik == "iot" || klik == "apps" ? <div>
+            <div className="flex flex-wrap justify-between" >
+              <p className="text-2xl text-justify font-bold hidden sm:block">Double Lock Box</p>
+              <p className="text-xl py-3 hidden sm:block">Arduino IDE | React Native | MQTT | OneSignal Notification</p>
+              <div className="w-[400px]">
+                <Image src="/porto/dlb.jpg" alt="" width={400} height={400} priority />
+                <div className="flex flex-col w-fit space-y-3 pt-3" >
+                  <div className="bg-blue rounded-md w-fit">
+                    <a target="_blank" href="https://unyku.id/IpkZxwzus6">
+                      <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
+                    </a>
+                  </div>
                 </div>
-                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/DoubleLockBox-Serverless">Source Code - Main</a>
-                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/CameraWebServer-Async-Fix">Source Code - Camera</a>
-                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/DoubleLockBox">Source Code - Aplikasi</a>
+              </div>
+              <div className="flex-1 space-y-3 md:pl-0 pl-7">
+                <p className="text-2xl text-justify font-bold sm:hidden">Double Lock Box</p>
+                <p className="text-xl sm:hidden">Arduino IDE | React Native | MQTT | OneSignal Notification</p>
+                <p className="text-2xl text-justify sm:text-left">Double Lock Box adalah sistem IoT pengunci brankas dengan integrasi Face Recognition dan Fingerprint, dilengkapi aplikasi untuk mengatur dan memonitor pengaturan sistem. Aplikasi juga akan menerima notifikasi saat brankas dalam kondisi mencurigakan.</p>
               </div>
             </div>
-            <div className="flex-1 space-y-3 md:pl-0 pl-7">
-              <p className="text-2xl text-justify font-bold sm:hidden">Double Lock Box</p>
-              <p className="text-xl sm:hidden">Arduino IDE | React Native | MQTT | OneSignal Notification</p>
-              <p className="text-2xl text-justify sm:text-left">Double Lock Box adalah sistem IoT pengunci brankas dengan integrasi Face Recognition dan Fingerprint, dilengkapi aplikasi untuk mengatur dan memonitor pengaturan sistem. Aplikasi juga akan menerima notifikasi saat brankas dalam kondisi mencurigakan.</p>
-            </div>
-          </div>
-          <div className="w-[100%] border-[0.1px] border-grey my-10" />
+            <div className="w-[100%] border-[0.1px] border-grey my-10" />
+          </div> : <div />}
 
           {/* AntiSectaBot */}
-          <div className="flex flex-wrap justify-between" >
-            <p className="text-2xl text-justify font-bold hidden sm:block">AntiSectaBot</p>
-            <p className="text-xl py-3 hidden sm:block">Arduino IDE | Raspberry Pi</p>
-            <div className="w-[400px]">
-              <Image src="/porto/antisecta.jpg" alt="" width={400} height={400} priority />
-              <div className="flex flex-col w-fit space-y-3 pt-3" >
-                <div className="bg-blue rounded-md w-fit">
-                  <a target="_blank" href="https://www.youtube.com/@Antisecta-bot">
-                    <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
-                  </a>
+          {klik == "all" || klik == "iot" ? <div>
+            <div className="flex flex-wrap justify-between" >
+              <p className="text-2xl text-justify font-bold hidden sm:block">AntiSectaBot</p>
+              <p className="text-xl py-3 hidden sm:block">Arduino IDE | Raspberry Pi</p>
+              <div className="w-[400px]">
+                <Image src="/porto/antisecta.jpg" alt="" width={400} height={400} priority />
+                <div className="flex flex-col w-fit space-y-3 pt-3" >
+                  <div className="bg-blue rounded-md w-fit">
+                    <a target="_blank" href="https://www.youtube.com/@Antisecta-bot">
+                      <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
+                    </a>
+                  </div>
+                  <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/wallfollower-antisecta">Source Code - Wall Follower</a>
                 </div>
-                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/wallfollower-antisecta">Source Code - Wall Follower</a>
+              </div>
+              <div className="flex-1 space-y-3 pl-7 md:pl-0">
+                <p className="text-2xl text-justify font-bold sm:hidden">AntiSectaBot</p>
+                <p className="text-xl sm:hidden">Arduino IDE | Raspberry Pi</p>
+                <p className="text-2xl text-justify sm:text-left">AntiSectaBot adalah project yang diajukan untuk PKM (Program Kreativitas Mahasiswa), robot berbasis Machine Learning dan Wall Follower yang dirancang untuk membantu petani bawang merah dalam memberantas hama serangga secara otomatis. Pada project ini, bertugas merancang dan mengimplementasikan wall follower dengan Fuzzy Logic, menggunakan sensor Ultrasonic dan QMC5883 (Kompas).</p>
               </div>
             </div>
-            <div className="flex-1 space-y-3 pl-7 md:pl-0">
-              <p className="text-2xl text-justify font-bold sm:hidden">AntiSectaBot</p>
-              <p className="text-xl sm:hidden">Arduino IDE | Raspberry Pi</p>
-              <p className="text-2xl text-justify sm:text-left">AntiSectaBot adalah project yang diajukan untuk PKM (Program Kreativitas Mahasiswa), robot berbasis Machine Learning dan Wall Follower yang dirancang untuk membantu petani bawang merah dalam memberantas hama serangga secara otomatis. Pada project ini, bertugas merancang dan mengimplementasikan wall follower dengan Fuzzy Logic, menggunakan sensor Ultrasonic dan QMC5883 (Kompas).</p>
-            </div>
-          </div>
-          <div className="w-[100%] border-[0.1px] border-grey my-10" />
+            <div className="w-[100%] border-[0.1px] border-grey my-10" />
+          </div> : <div />}
 
           {/* Media Pembelajaran */}
-          <div className="flex flex-wrap justify-between" >
-            <p className="text-2xl text-justify font-bold hidden sm:block">Media Pembelajaran ANFIS</p>
-            <p className="text-xl py-3 hidden sm:block">Raspberry Pi | Python | MATLAB & Simulink</p>
-            <div className="w-[400px]">
-              <Image src="/porto/mediapem.jpg" alt="" width={400} height={400} priority />
-              <div className="flex flex-col w-fit space-y-3 pt-3" >
-                <div className="bg-blue rounded-md w-fit">
-                  <a target="_blank" href="https://unyku.id/ZCrBkZChSb">
-                    <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
-                  </a>
+          {klik == "all" || klik == "iot" ? <div>
+            <div className="flex flex-wrap justify-between" >
+              <p className="text-2xl text-justify font-bold hidden sm:block">Media Pembelajaran ANFIS</p>
+              <p className="text-xl py-3 hidden sm:block">Raspberry Pi | Python | MATLAB & Simulink</p>
+              <div className="w-[400px]">
+                <Image src="/porto/mediapem.jpg" alt="" width={400} height={400} priority />
+                <div className="flex flex-col w-fit space-y-3 pt-3" >
+                  <div className="bg-blue rounded-md w-fit">
+                    <a target="_blank" href="https://unyku.id/ZCrBkZChSb">
+                      <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
+                    </a>
+                  </div>
                 </div>
-                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/pte-anifs">Source Code</a>
+              </div>
+              <div className="flex-1 space-y-3 pl-7 md:pl-0">
+                <p className="text-2xl text-justify font-bold sm:hidden">Media Pembelajaran ANFIS</p>
+                <p className="text-xl sm:hidden">Raspberry Pi | Python | MATLAB & Simulink</p>
+                <p className="text-2xl text-justify sm:text-left">Sebuah media pembelajaran ANFIS (Adaptive Neuro Fuzzy Inference System), dengan integrasi Matlab & Simulink. Menggunakan Raspberry Pi untuk menjalankan program dengan input dari sensor MQ-2 (Deteksi Gas), DHT11 (Temperatur), dan HuskyLens (Deteksi Jumlah Orang), serta menghasilkan output berupa sinyal PWM untuk mengontrol kecepatan kipas.</p>
               </div>
             </div>
-            <div className="flex-1 space-y-3 pl-7 md:pl-0">
-              <p className="text-2xl text-justify font-bold sm:hidden">Media Pembelajaran ANFIS</p>
-              <p className="text-xl sm:hidden">Raspberry Pi | Python | MATLAB & Simulink</p>
-              <p className="text-2xl text-justify sm:text-left">Sebuah media pembelajaran ANFIS (Adaptive Neuro Fuzzy Inference System), dengan integrasi Matlab & Simulink. Menggunakan Raspberry Pi untuk menjalankan program dengan input dari sensor MQ-2 (Deteksi Gas), DHT11 (Temperatur), dan HuskyLens (Deteksi Jumlah Orang), serta menghasilkan output berupa sinyal PWM untuk mengontrol kecepatan kipas.</p>
-            </div>
-          </div>
-          <div className="w-[100%] border-[0.1px] border-grey my-10" />
+            <div className="w-[100%] border-[0.1px] border-grey my-10" />
+          </div> : <div />}
 
           {/* Mini Project RC */}
-          <div className="flex flex-wrap justify-between" >
-            <p className="text-2xl text-justify font-bold hidden sm:block">Mini Project RC</p>
-            <p className="text-xl py-3 hidden sm:block">Arduino IDE | React Native</p>
-            <div className="w-[400px]">
-              <Image src="/porto/minipr.jpg" alt="" width={400} height={400} priority />
-              <div className="flex flex-col w-fit space-y-3 pt-3" >
-                <div className="bg-blue rounded-md w-fit">
-                  <a target="_blank" href="https://unyku.id/SeuUJOLpzq">
-                    <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
-                  </a>
+          {klik == "all" || klik == "iot" ? <div>
+            <div className="flex flex-wrap justify-between" >
+              <p className="text-2xl text-justify font-bold hidden sm:block">Mini Project RC</p>
+              <p className="text-xl py-3 hidden sm:block">Arduino IDE | React Native</p>
+              <div className="w-[400px]">
+                <Image src="/porto/minipr.jpg" alt="" width={400} height={400} priority />
+                <div className="flex flex-col w-fit space-y-3 pt-3" >
+                  <div className="bg-blue rounded-md w-fit">
+                    <a target="_blank" href="https://unyku.id/SeuUJOLpzq">
+                      <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Video</p>
+                    </a>
+                  </div>
+                  <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/rcproject">Source Code - Aplikasi</a>
+                  <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/komdat-esp32">Source Code - Alat</a>
                 </div>
-                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/rcproject">Source Code - Aplikasi</a>
-                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/komdat-esp32">Source Code - Alat</a>
+              </div>
+              <div className="flex-1 space-y-3 pl-7 md:pl-0">
+                <p className="text-2xl text-justify font-bold sm:hidden">Mini Project RC</p>
+                <p className="text-xl sm:hidden">Arduino IDE | React Native</p>
+                <p className="text-2xl text-justify sm:text-left">Tugas akhir mata kuliah Komunikasi Data, sebuah mobil RC (Remote Control)  yang dikendalikan melalui aplikasi menggunakan BLE (Bluetooth Low Energy). Dilengkapi dengan Streaming Kamera dan Sensor LDR untuk menyalakan lampu otomatis di tempat gelap.</p>
               </div>
             </div>
-            <div className="flex-1 space-y-3 pl-7 md:pl-0">
-              <p className="text-2xl text-justify font-bold sm:hidden">Mini Project RC</p>
-              <p className="text-xl sm:hidden">Arduino IDE | React Native</p>
-              <p className="text-2xl text-justify sm:text-left">Tugas akhir mata kuliah Komunikasi Data, sebuah mobil RC (Remote Control)  yang dikendalikan melalui aplikasi menggunakan BLE (Bluetooth Low Energy). Dilengkapi dengan Streaming Kamera dan Sensor LDR untuk menyalakan lampu otomatis di tempat gelap.</p>
-            </div>
-          </div>
-          <div className="w-[100%] border-[0.1px] border-grey my-10" />
+            <div className="w-[100%] border-[0.1px] border-grey my-10" />
+          </div> : <div />}
 
           {/* ZWALLET */}
-          <div className="flex flex-wrap justify-between" >
-            <p className="text-2xl text-justify font-bold hidden sm:block">Zwallet Web & Mobile</p>
-            <p className="text-xl py-3 hidden sm:block">ReactJs | React Native | ExpressJs | Firebase Notification</p>
-            <div className="w-[400px]">
-              <Image src="/porto/zwallet.jpg" alt="" width={400} height={400} priority />
-              <div className="flex flex-col w-fit space-y-3 pt-3" >
-                {/* <div className="bg-blue rounded-md w-fit">
-                    <a target="_blank" href="https://www.figma.com/file/4I1M0r7BRbfx5qOMpkJns8/KAS-MASJID?type=design&mode=design&t=yTq5MjSQgpS7pJw1-1">
-                      <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Visit</p>
-                    </a>
-                  </div> */}
-                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/Z-Wallet-Web">Source Code - Web</a>
-                <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/Z-Wallet-Mobile">Source Code - Mobile</a>
+          {klik == "all" || klik == "apps" ? <div>
+            <div className="flex flex-wrap justify-between" >
+              <p className="text-2xl text-justify font-bold hidden sm:block">Zwallet Web & Mobile</p>
+              <p className="text-xl py-3 hidden sm:block">ReactJs | React Native | ExpressJs | Firebase Notification</p>
+              <div className="w-[400px]">
+                <Image src="/porto/zwallet.jpg" alt="" width={400} height={400} priority />
+                <div className="flex flex-col w-fit space-y-3 pt-3" >
+                  <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/Z-Wallet-Web">Source Code - Web</a>
+                  <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/Z-Wallet-Mobile">Source Code - Mobile</a>
+                </div>
+              </div>
+              <div className="flex-1 space-y-3 pl-7 md:pl-0">
+                <p className="text-2xl text-justify font-bold sm:hidden">Zwallet Web & Mobile</p>
+                <p className="text-xl sm:hidden">ReactJs | React Native | ExpressJs | Firebase Notification</p>
+                <div className="flex items-center">
+                  <Image className="mr-3" src="/warning.svg" alt="" width={30} height={30} priority />
+                  <p className="text-[#efc82a] text-xl font-semibold">Sedang Dalam Pemeliharaan</p>
+                </div>
+                <p className="text-2xl text-justify sm:text-left">Zwallet adalah aplikasi payment untuk memudahkan melakukan pembayaran secara online dengan mudah dan cepat. Memiliki beberapa fitur seperti Transfer Balance, Notification, Search & Filter Data, Authentication.</p>
               </div>
             </div>
-            <div className="flex-1 space-y-3 pl-7 md:pl-0">
-              <p className="text-2xl text-justify font-bold sm:hidden">Zwallet Web & Mobile</p>
-              <p className="text-xl sm:hidden">ReactJs | React Native | ExpressJs | Firebase Notification</p>
-              <div className="flex items-center">
-                <Image className="mr-3" src="/warning.svg" alt="" width={30} height={30} priority />
-                <p className="text-[#efc82a] text-xl font-semibold">Sedang Dalam Pemeliharaan</p>
-              </div>
-              <p className="text-2xl text-justify sm:text-left">Zwallet adalah aplikasi payment untuk memudahkan melakukan pembayaran secara online dengan mudah dan cepat. Memiliki beberapa fitur seperti Transfer Balance, Notification, Search & Filter Data, Authentication.</p>
-            </div>
-          </div>
+            <div className="w-[100%] border-[0.1px] border-grey my-10" />
+          </div> : <div />}
+
         </div>
       </div>
-
       <div ref={getInRef} className="bg-blue-dark h-min-[400px] w-screen">
         <div className="max-w-screen-lg pt-[100px] pb-[100px] flex flex-wrap justify-center items-center">
           <div>
