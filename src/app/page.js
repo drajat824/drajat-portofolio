@@ -129,10 +129,10 @@ export default function Home() {
               <p className={`text-xl ${klik == "all" ? "text-white" : "text-black"}`}>all</p>
             </button>
             <button onClick={() => setKlik("iot")} className={`p-3 rounded-[20px] min-w-[70px] shadow ${klik == "iot" ? "bg-[#00B1B6]" : "bg-[#D9D9D9]"}`} >
-              <p className={`text-xl ${klik == "iot" ? "text-white" : "text-black"}`}>internet of things</p>
+              <p className={`text-xl ${klik == "iot" ? "text-white" : "text-black"} break-words`}>internet of things</p>
             </button>
             <button onClick={() => setKlik("apps")} className={`p-3 rounded-[20px] min-w-[70px] shadow ${klik == "apps" ? "bg-[#00B1B6]" : "bg-[#D9D9D9]"}`} >
-              <p className={`text-xl ${klik == "apps" ? "text-white" : "text-black"}`}>mobile/website</p>
+              <p className={`text-xl ${klik == "apps" ? "text-white" : "text-black"} break-words`}>mobile/website</p>
             </button>
           </div>
 
