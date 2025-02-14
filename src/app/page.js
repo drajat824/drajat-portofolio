@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 export default function Home() {
-  const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL", "ExpressJs"];
+  const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL", "ExpressJs", "Tailwind", "Figma"];
   const skills2 = ["Internet Of Things", "MQTT", "Electronics Circuit Design", "Soldering", "Basic Network Administration"];
   // const data = {
   //   [{title: "Zwallet", desc: "Zwallet adalah blablblalbalbalbal", "skills": ["React", "React Native", "ExpressJs"], "video": "google.com", "sc1": "asdasd", "sc2": ""}]
