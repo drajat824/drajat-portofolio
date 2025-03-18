@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL", "ExpressJs", "Tailwind", "Figma", "Bootstrap", "Firebase", "OneSignal"];
@@ -10,13 +10,26 @@ export default function Home() {
   //   [{title: "Zwallet", desc: "Zwallet adalah blablblalbalbalbal", "skills": ["React", "React Native", "ExpressJs"], "video": "google.com", "sc1": "asdasd", "sc2": ""}]
   // }
 
-  const hireMeRef = React.createRef();
+  const scrollRef = React.createRef();
   const getInRef = React.createRef();
   const handleGetinButtonClick = () => {
     getInRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  const [klik, setKlik] = useState("all")
+  const [klik, setKlik] = useState("all");
+  const [isFixed, setIsFixed] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      console.log("Scroll Y:", window.scrollY);
+
+      if (window.scrollY > 500) {
+        setIsFixed(false);
+      } else {
+        setIsFixed(true);
+      }
+    });
+  }, []);
 
 
   return (
@@ -51,7 +64,9 @@ export default function Home() {
             </button>
           </div>
 
-          <Image src="burger.svg" width={50} height={50} priority className="h-max md:hidden sm:hidden lg:hidden" />
+          <a href="#">
+            <Image src="burger.svg" priority width={50} height={50} className={`h-max md:hidden sm:hidden lg:hidden right-[25px] ${isFixed ? "fixed" : "absolute bottom-[-430px]"}`} title="Burgir" />
+          </a>
 
           {/* <a href="#" className="h-max md:hidden sm:hidden">
             <div style={{ width: 30, borderWidth: 2, borderColor: "white", marginBottom: 3 }} />
@@ -100,7 +115,7 @@ export default function Home() {
 
       </div>
 
-      <div className="bg-blue-dark h-min-[400px] w-screen">
+      <div ref={scrollRef} className="bg-blue-dark h-min-[400px] w-screen">
         <div className="mx-auto pt-[100px] pb-[100px] max-w-[1000px] sm:max-w-[300px] md:max-w-[300px] xl:max-w-[800px] lg:max-w-[800px]">
           <h1 className="font-bold text-5xl pb-3 text-white underline">SKILLS</h1>
           <div className="w-[100%] h-fit rounded-xl pt-5 flex flex-wrap">
