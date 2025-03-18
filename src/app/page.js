@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 export default function Home() {
-  const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL", "ExpressJs", "Tailwind", "Figma", "Bootstrap"];
+  const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL", "ExpressJs", "Tailwind", "Figma", "Bootstrap", "Firebase", "OneSignal"];
   const skills2 = ["Internet Of Things", "MQTT", "Electronics Circuit Design", "Soldering", "Basic Network Administration"];
   // const data = {
   //   [{title: "Zwallet", desc: "Zwallet adalah blablblalbalbalbal", "skills": ["React", "React Native", "ExpressJs"], "video": "google.com", "sc1": "asdasd", "sc2": ""}]
@@ -109,14 +109,19 @@ export default function Home() {
                 <p className="text-white text-2xl">{e}</p>
               </div>
             ))}
+            {skills2.map((e, i) => (
+              <div key={`skills1_${i}`} className="w-fit h-fit rounded-xl bg-[#da5964] p-3 mr-3 mb-3">
+                <p className="text-white text-2xl">{e}</p>
+              </div>
+            ))}
           </div>
-          <div className="w-[100%] h-fit rounded-xl pb-2 flex flex-wrap">
+          {/* <div className="w-[100%] h-fit rounded-xl pb-2 flex flex-wrap">
             {skills2.map((e, i) => (
               <div key={`skills2_${i}`} className="w-fit h-fit rounded-xl bg-[#da5964] p-3 mr-3 mb-3">
                 <p className="text-white text-2xl">{e}</p>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 
