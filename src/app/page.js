@@ -255,6 +255,31 @@ export default function Home() {
             <div className="w-[100%] border-[0.1px] border-grey my-10" />
           </div> : <div />}
 
+          {/* SOWAN */}
+          {klik == "all" || klik == "apps" ? <div>
+            <div className="flex flex-wrap justify-between" >
+              <p className="text-2xl text-justify font-bold hidden sm:block">SOWAN</p>
+              <p className="text-xl py-3 hidden sm:block">Bootstrap | IndexDB | LeafletJS</p>
+              <div className="w-[400px]">
+                <Image src="/porto/sowan.png" alt="" width={400} height={400} priority />
+                <div className="flex flex-col w-fit space-y-3 pt-3" >
+                  <div className="bg-blue rounded-md w-fit">
+                    <a target="_blank" href="https://sowan.vercel.app/">
+                      <p className="text-xl pt-[5px] pb-[5px] pr-[15px] pl-[15px] text-white">Link Website</p>
+                    </a>
+                  </div>
+                  <a className="text-xl text-blue font-bold" target="_blank" href="https://github.com/drajat824/SowanCDN">Source Code</a>
+                </div>
+              </div>
+              <div className="flex-1 space-y-3 md:pl-0 pl-7">
+                <p className="text-2xl text-justify font-bold sm:hidden">SOWAN</p>
+                <p className="text-xl sm:hidden">Bootstrap | IndexDB | LeafletJS</p>
+                <p className="text-2xl text-justify sm:text-left">Sowan adalah website tugas akhir mata kuliah Desain Website yang bertujuan mempromosikan tempat wisata. Website ini memiliki dua peran pengguna, yaitu mitra wisata yang mengunggah tempat dan pengunjung yang mencari destinasi. Seluruh data disimpan secara lokal menggunakan IndexedDB tanpa backend. Salah satu fitur utamanya adalah pencarian tempat wisata berdasarkan jarak lokasi pengguna, sehingga memudahkan pengunjung menemukan destinasi terdekat.</p>
+              </div>
+            </div>
+            <div className="w-[100%] border-[0.1px] border-grey my-10" />
+          </div> : <div />}
+
           {/* ZWALLET */}
           {klik == "all" || klik == "apps" ? <div>
             <div className="flex flex-wrap justify-between" >
