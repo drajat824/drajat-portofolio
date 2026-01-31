@@ -1,14 +1,38 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, use } from "react";
 
 export default function Home() {
   const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL", "ExpressJs", "Tailwind", "Figma", "Bootstrap", "Firebase", "OneSignal"];
   const skills2 = ["Internet Of Things", "MQTT", "Electronics Circuit Design", "Soldering", "Basic Network Administration"];
-  // const data = {
-  //   [{title: "Zwallet", desc: "Zwallet adalah blablblalbalbalbal", "skills": ["React", "React Native", "ExpressJs"], "video": "google.com", "sc1": "asdasd", "sc2": ""}]
-  // }
+
+  const [displayedText, setDisplayedText] = useState("");
+  const fullText = "Fullstack Developer";
+
+  useEffect(() => {
+    if (displayedText == fullText) {
+      const timer = setTimeout(() => {
+        for (let j = displayedText.length; j >= 0; j--) {
+          setTimeout(() => {
+            let tes2 = fullText.substring(0, j);
+            setDisplayedText(tes2);
+          }, (displayedText.length - j) * 150);
+        }
+      }, 5000)
+      return () => clearTimeout(timer);
+    }
+  }, [displayedText]);
+
+  useEffect(() => {
+    if (displayedText != "") return;
+    for (let i = 0; i <= fullText.length; i++) {
+      setTimeout(() => {
+        let tes = fullText.substring(0, i);
+        setDisplayedText(tes);
+      }, i * 150);
+    }
+  }, [displayedText]);
 
   const scrollRef = React.createRef();
   const getInRef = React.createRef();
@@ -88,13 +112,12 @@ export default function Home() {
         />
 
         <div className="mx-auto flex flex-wrap pt-32 max-w-[1000px] xl:max-w-[800px] lg:max-w-[800px]">
-          <div className="flex-1 pl-[0px] sm:text-center md:text-center sm:pb-10 md:pb-10">
-            <p className="text-white pb-6 text-5xl md:text-3xl sm:text-3xl"> Hello, I am</p>
+          <div className="flex-1 pl-[0px] sm:text-center md:text-center sm:pb-10 md:pb-10 mt-[50px]">
             <p className="font-bold text-8xl md:text-6xl sm:text-6xl pb-5">
               Drajat Fikri <br /> Alfianto
             </p>
             <p className="text-2xl text-white">
-              I am a <span className="font-bold text-black">Fullstack Developer</span> with experience in developing{" "}
+              I am a <span className={`font-bold bg-white inline-block w-[225px] ${displayedText ? "text-black" : "text-white"}`}>{displayedText ? displayedText : "."}</span> with experience in developing{" "}
               <br className="md:hidden sm:hidden" /> website, mobile applications and IoT.
             </p>
           </div>
@@ -104,7 +127,7 @@ export default function Home() {
               <Image
                 src="/iam.png"
                 alt="Drajat Fikri Alfianto"
-                className="dark:invert relative top-[-13px] right-[0px]"
+                className="relative top-[-13px] right-[0px]"
                 width={280}
                 height={280}
                 priority
