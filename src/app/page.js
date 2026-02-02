@@ -1,26 +1,47 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useState, useRef, use } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Home() {
   const skills = ["NodeJs", "Python", "React & React Native", "HTML & CSS", "MYSQL", "ExpressJs", "Tailwind", "Figma", "Bootstrap", "Firebase", "OneSignal"];
   const skills2 = ["Internet Of Things", "MQTT", "Electronics Circuit Design", "Soldering", "Basic Network Administration"];
 
   const [displayedText, setDisplayedText] = useState("");
-  const fullText = "Fullstack Developer";
+  const [isDeleting, setIsDeleting] = useState(false);
+  const fullText = "Fullstack Developer..";
+
+  let intervalId;
+  let intervalId2;
+  let tesDot
 
   useEffect(() => {
-    if (displayedText == fullText) {
-      const timer = setTimeout(() => {
+    if (displayedText == fullText && !isDeleting) {
+      setIsDeleting(true);
+
+      intervalId = setInterval(() => {
+        tesDot = fullText.substring(0, displayedText.length - 1);
+        setDisplayedText(tesDot);
+      }, 500);
+
+      intervalId2 = setInterval(() => {
+        tesDot = tesDot + ".";
+        setDisplayedText(tesDot);
+      }, 1000);
+
+      setTimeout(() => {
+        console.log("STOP DELETING...");
+        clearInterval(intervalId);
+        clearInterval(intervalId2);
+
         for (let j = displayedText.length; j >= 0; j--) {
           setTimeout(() => {
             let tes2 = fullText.substring(0, j);
             setDisplayedText(tes2);
           }, (displayedText.length - j) * 150);
         }
-      }, 5000)
-      return () => clearTimeout(timer);
+
+      }, 4000);
     }
   }, [displayedText]);
 
@@ -30,6 +51,11 @@ export default function Home() {
       setTimeout(() => {
         let tes = fullText.substring(0, i);
         setDisplayedText(tes);
+
+        if (i == fullText.length) {
+          setIsDeleting(false);
+        }
+
       }, i * 150);
     }
   }, [displayedText]);
@@ -117,7 +143,7 @@ export default function Home() {
               Drajat Fikri <br /> Alfianto
             </p>
             <p className="text-2xl text-white">
-              I am a <span className={`font-bold bg-white inline-block w-[225px] ${displayedText ? "text-black" : "text-white"}`}>{displayedText ? displayedText : "."}</span> with experience in developing{" "}
+              I am a <span className={`font-bold bg-white inline-block w-[240px] ${displayedText ? "text-black" : "text-white"}`}>{displayedText ? displayedText : "."}</span> with experience in developing{" "}
               <br className="md:hidden sm:hidden" /> website, mobile applications and IoT.
             </p>
           </div>
